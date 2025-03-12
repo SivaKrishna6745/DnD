@@ -1,0 +1,99 @@
+/* reset css */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #e1e1e1;
+}
+
+ul {
+    list-style-type: none;
+}
+
+/* utilities css */
+.flex {
+    display: flex;
+}
+
+.fl-cntr {
+    justify-content: center;
+    align-items: center;
+}
+
+.fl-wrap {
+    flex-wrap: wrap;
+}
+
+.grid {
+    display: grid;
+}
+
+.grid-centered {
+    place-items: center;
+}
+
+.btn {
+    border: 0;
+    outline: 0;
+    border-radius: 0.4rem;
+    padding: 0.5rem 1rem;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* project css */
+.project {
+    margin-top: 3rem;
+}
+
+.project h1,
+.project h2 {
+    text-align: center;
+}
+
+form {
+    margin: 2rem 0;
+    gap: 2rem;
+}
+
+.btn-classes {
+    background-color: hsl(120, 65%, 55%);
+}
+
+.btn-features {
+    background-color: hsl(160, 65%, 55%);
+}
+
+.btn-monsters {
+    background-color: hsl(200, 65%, 55%);
+}
+
+.btn-spells {
+    background-color: hsl(240, 65%, 75%);
+}
+
+.details-list {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.details {
+    margin: 0.5rem;
+    border-radius: 0.4rem;
+    padding: 1rem 2rem;
+}
+
+.details:nth-child(2n) {
+    background-color: #c1c1c1;
+}
+
+.details:nth-child(2n + 1) {
+    background-color: #9d9d9d;
+}
+
+.details p {
+    padding: 0.2rem;
+}

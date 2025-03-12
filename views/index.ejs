@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>API</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="/styles/main.css" />
+    </head>
+    <body class="project">
+        <h1 class="project-title">Welcome to Dragons & Dungeons</h1>
+        <form class="flex fl-cntr">
+            <input type="submit" class="btn btn-classes" value="Classes" formaction="/get-classes" />
+            <input type="submit" class="btn btn-features" value="Features" formaction="/get-features" />
+            <input type="submit" class="btn btn-monsters" value="Monsters" formaction="/get-monsters" />
+            <input type="submit" class="btn btn-spells" value="Spells" formaction="/get-spells" />
+        </form>
+        <% if (locals.content) { %> <% if (locals.content.results) { %>
+        <ul class="grid details-list">
+            <% for (let i = 0; i < locals.content.results.length; i++) { %>
+            <li class="details">
+                <p>
+                    <a href="<%= `${locals.endPoint}/${locals.content.results[i].index}` %>">
+                        <%= locals.content.results[i].index %>
+                    </a>
+                </p>
+                <p><%= locals.content.results[i].name %></p>
+            </li>
+            <% } %>
+        </ul>
+        <% } else { %>
+        <h2><%= content %></h2>
+        <% } %> <% } %>
+    </body>
+</html>
