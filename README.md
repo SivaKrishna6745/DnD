@@ -24,7 +24,9 @@ Step 2: run "npm i" or "npm install"
 
 Step 3: run "node index.js" or "nodemon index.js"
 
-#### P.S. [nodemon](https://www.npmjs.com/package/nodemon) is a utility tool to assist [Node.js](https://nodejs.org/) applications by automaticlaly restarting the application whenever there is a file change detected.
+#### P.S. [nodemon](https://www.npmjs.com/package/nodemon) is a utility tool (NPM package) to assist [Node.js](https://nodejs.org/) applications by automaticlaly restarting the application whenever there is a file change detected.
+
+-   To install nodemon globally, run "npm install -g nodemon" in the terminal.
 
 ---
 
