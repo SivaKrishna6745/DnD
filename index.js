@@ -8,7 +8,7 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', async (req, res) => {
-    res.render('index.ejs', { content: 'Select any thing from above' });
+    res.render('index.ejs');
 });
 
 app.get('/get-classes', async (req, res) => {
@@ -35,6 +35,32 @@ app.get('/get-monsters', async (req, res) => {
 app.get('/get-spells', async (req, res) => {
     const result = await axios.get('https://www.dnd5eapi.co/api/2014/spells');
     res.render('index.ejs', { content: result.data, endPoint: '/get-spells' });
+});
+
+app.get('/get-classes/:id', async (req, res) => {
+    const id = req.params.id;
+    const result = await axios.get('https://www.dnd5eapi.co/api/2014/classes/' + id);
+    console.log(result.data);
+    res.render('classes.ejs', { classesData: result.data });
+});
+
+app.get('/get-features/:id', async (req, res) => {
+    const id = req.params.id;
+    const result = await axios.get('https://www.dnd5eapi.co/api/2014/features/' + id);
+    res.render('features.ejs', { featuresData: result.data });
+});
+
+app.get('/get-monsters/:id', async (req, res) => {
+    const id = req.params.id;
+    const result = await axios.get('https://www.dnd5eapi.co/api/2014/monsters/' + id);
+    res.render('monsters.ejs', { monstersData: result.data });
+});
+
+app.get('/get-spells/:id', async (req, res) => {
+    const id = req.params.id;
+    const result = await axios.get('https://www.dnd5eapi.co/api/2014/spells/' + id);
+    console.log(result.data);
+    res.render('spells.ejs', { spellsData: result.data });
 });
 
 app.listen(PORT, () => {
