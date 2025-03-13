@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="/styles/main.css" />
+    </head>
+    <body>
+        <% if (locals.spellsData) { %>
+        <div class="spell flex">
+            <h2>Below are some of the details about this class:</h2>
+            <div class="spell-card flex">
+                <div class="spell-name flex">
+                    <label>Spell Name:</label>
+                    <p><%= spellsData.name %></p>
+                </div>
+                <div class="spell-range flex">
+                    <label>Range:</label>
+                    <p><%= spellsData.range %></p>
+                </div>
+                <div class="spell-duration flex">
+                    <label>Duration:</label>
+                    <p><%= spellsData.duration %></p>
+                </div>
+                <div class="spell-school flex">
+                    <label>School:</label>
+                    <p><%= spellsData.school.name %></p>
+                </div>
+                <div class="spell-dt flex">
+                    <label>Damage Type:</label>
+                    <p><%= spellsData.damage.damage_type.name %></p>
+                </div>
+                <div class="spell-desc">
+                    <label>Description:</label>
+                    <ul class="spell-desc-list flex">
+                        <% for(let i = 0; i < spellsData.desc.length; i++) { %>
+                        <li><%= spellsData.desc[i] %></li>
+                        <% } %>
+                    </ul>
+                </div>
+                <div class="spell-comp">
+                    <label>Components:</label>
+                    <ul class="spell-comp-list flex">
+                        <% for(let i = 0; i < spellsData.components.length; i++) { %>
+                        <li><%= spellsData.components[i] %></li>
+                        <% } %>
+                    </ul>
+                </div>
+                <div class="spell-classes">
+                    <label>Classes:</label>
+                    <ul class="spell-classes-list flex">
+                        <% for(let i = 0; i < spellsData.classes.length; i++) { %>
+                        <li><%= spellsData.classes[i].name %></li>
+                        <% } %>
+                    </ul>
+                </div>
+                <div class="spell-sub-cl">
+                    <label>Sub Classes:</label>
+                    <ul class="spell-sub-cl-list flex">
+                        <% for(let i = 0; i < spellsData.subclasses.length; i++) { %>
+                        <li><%= spellsData.subclasses[i].name %></li>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+            <h3>
+                For further details about this class, visit this
+                <a href="https://www.dnd5eapi.co<%= spellsData.url %>">link</a>
+            </h3>
+        </div>
+        <% } %>
+    </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Classes</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="/styles/main.css" />
+    </head>
+    <body>
+        <div class="class flex">
+            <h2>Below are some of the details about this class:</h2>
+            <div class="class-card flex">
+                <div class="class-name flex">
+                    <label>Class Name: </label>
+                    <p><%= classesData.name %></p>
+                </div>
+                <div class="class-hd flex">
+                    <label>Hit Die: </label>
+                    <p><%= classesData.hit_die %></p>
+                </div>
+                <div class="class-sub">
+                    <label>Sub Class: </label>
+                    <ul class="class-sub-list flex fl-wrap">
+                        <% for(let i = 0; i < classesData.subclasses.length; i++) { %>
+                        <li><%= classesData.subclasses[i].name %></li>
+                        <% } %>
+                    </ul>
+                </div>
+                <div class="class-prof">
+                    <label>Proficiencies:</label>
+                    <ul class="class-prof-list flex fl-wrap">
+                        <% for(let i = 0; i < classesData.proficiencies.length; i++) { %>
+                        <li><%= classesData.proficiencies[i].name %></li>
+                        <% } %>
+                    </ul>
+                </div>
+                <div class="class-se">
+                    <label>Starting Equipment:</label>
+                    <ul class="class-se-list flex fl-wrap">
+                        <% for(let i = 0; i< classesData.starting_equipment.length; i++) { %>
+                        <li>
+                            <span><%= classesData.starting_equipment[i].equipment.name %></span> -
+                            <span><%= classesData.starting_equipment[i].quantity %></span>
+                        </li>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+            <h3>
+                For further details about this class, visit this
+                <a href="https://www.dnd5eapi.co<%= classesData.url %>">link</a>
+            </h3>
+        </div>
+    </body>
+</html>

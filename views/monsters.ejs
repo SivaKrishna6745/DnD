@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Monsters</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="/styles/main.css" />
+    </head>
+    <body>
+        <% if (locals.monstersData) { %>
+        <div class="monster flex fl-cntr">
+            <div class="monster-card-left flex">
+                <% if (monstersData.image) { %>
+                <div class="monster-img">
+                    <img src="<%= `https://www.dnd5eapi.co${monstersData.image}` %>" alt="" />
+                </div>
+                <% } %>
+                <div class="monster-name">
+                    <label class="type">Name:</label>
+                    <p class="value"><%= monstersData.name %></p>
+                </div>
+                <div class="monster-senses">
+                    <label class="type">Senses:</label>
+                    <ul class="monster-senses-list">
+                        <% for(let sense in monstersData.senses) { %>
+                        <li class="monster-senses-item">
+                            <p><%= sense %></p>
+                            <p><%= monstersData.senses[sense] %></p>
+                        </li>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+            <div class="monster-card-right flex">
+                <div class="monster-details flex">
+                    <div class="monster-stats monster-hp flex fl-cntr">
+                        <img class="monster-stats-logo" src="/images/hp.png" />
+                        <label class="value"> <%= monstersData.hit_points %> </label>
+                    </div>
+                    <div class="monster-stats monster-strength flex fl-cntr">
+                        <img class="monster-stats-logo" src="/images/strength.png" />
+                        <label class="value"> <%= monstersData.strength %> </label>
+                    </div>
+                    <div class="monster-stats monster-dexterity flex fl-cntr">
+                        <img class="monster-stats-logo" src="/images/dexterity.png" />
+                        <label class="value"> <%= monstersData.dexterity %> </label>
+                    </div>
+                    <div class="monster-stats monster-charisma flex fl-cntr">
+                        <img class="monster-stats-logo" src="/images/charisma.png" />
+                        <label class="value"> <%= monstersData.charisma %> </label>
+                    </div>
+                </div>
+                <div class="monster-features flex">
+                    <% if (monstersData.special_abilities.length > 0) { %>
+                    <div class="monster-sa">
+                        <label class="type">Special Abilities: </label>
+                        <ul class="monster-sa-list flex fl-wrap">
+                            <% for(let i = 0; i < monstersData.special_abilities.length; i++) { %>
+                            <li class="monster-sa-item"><%= monstersData.special_abilities[i].name %></li>
+                            <% } %>
+                        </ul>
+                    </div>
+                    <% } %> <% if (monstersData.actions.length > 0) { %>
+                    <div class="monster-actions">
+                        <label class="type">Actions: </label>
+                        <ul class="monster-actions-list flex fl-wrap">
+                            <% for (let i = 0; i < monstersData.actions.length; i++) { %>
+                            <li class="monster-actions-item"><%= monstersData.actions[i].name %></li>
+                            <% } %>
+                        </ul>
+                    </div>
+                    <% } %> <% if (monstersData.legendary_actions.length > 0) { %>
+                    <div class="monster-la">
+                        <label class="type">Legendary Actions: </label>
+                        <ul class="monster-la-list flex fl-wrap">
+                            <% for (let i = 0; i < monstersData.legendary_actions.length; i++) { %>
+                            <li class="monster-la-item"><%= monstersData.legendary_actions[i].name %></li>
+                            <% } %>
+                        </ul>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+        <% } %>
+    </body>
+</html>

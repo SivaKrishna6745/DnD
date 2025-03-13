@@ -39,15 +39,21 @@ ul {
 .btn {
     border: 0;
     outline: 0;
-    border-radius: 0.4rem;
-    padding: 0.5rem 1rem;
+    border-radius: 0.6rem;
+    padding: 1rem 2rem;
     font-size: 20px;
     cursor: pointer;
 }
 
 /* project css */
 .project {
+    margin: 0 3rem;
     margin-top: 3rem;
+}
+
+.project-title span {
+    font-family: 'Merienda', cursive;
+    font-weight: 900;
 }
 
 .project h1,
@@ -58,20 +64,69 @@ ul {
 form {
     margin: 2rem 0;
     gap: 2rem;
+    margin-top: 3rem;
 }
 
+.form-with-cards {
+    grid-auto-flow: column;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.card {
+    height: 300px;
+    border-radius: 1rem;
+    padding: 2rem;
+    cursor: pointer;
+    box-shadow: none;
+    transition: box-shadow 150ms;
+}
+
+.card:hover {
+    box-shadow: 0.2rem 0.2rem 0.8rem #1f1f1f;
+}
+
+.card a {
+    text-decoration: none;
+    color: inherit;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.card a h2 {
+    font-size: 2.2rem;
+}
+
+.card a li {
+    margin: 1rem 0;
+    font-size: 1.2rem;
+}
+
+.form-with-inputs .btn {
+    font-size: 1.5rem;
+    box-shadow: none;
+    transition: box-shadow 150ms;
+}
+
+.form-with-inputs .btn:hover {
+    box-shadow: 0.1rem 0.1rem 0.5rem #3d3d3d;
+}
+
+.card-cl,
 .btn-classes {
     background-color: hsl(120, 65%, 55%);
 }
 
+.card-fe,
 .btn-features {
     background-color: hsl(160, 65%, 55%);
 }
 
+.card-mo,
 .btn-monsters {
     background-color: hsl(200, 65%, 55%);
 }
 
+.card-sp,
 .btn-spells {
     background-color: hsl(240, 65%, 75%);
 }
@@ -84,16 +139,268 @@ form {
     margin: 0.5rem;
     border-radius: 0.4rem;
     padding: 1rem 2rem;
+    width: 300px;
+    scale: 1;
+    transition: scale 150ms;
+}
+
+.details:hover {
+    scale: 1.05;
+}
+
+.details a {
+    text-decoration: none;
+    color: inherit;
 }
 
 .details:nth-child(2n) {
     background-color: #c1c1c1;
+    box-shadow: 3px 4px 8px #7b7b7b;
 }
 
 .details:nth-child(2n + 1) {
     background-color: #9d9d9d;
+    box-shadow: 3px 4px 8px #5d5d5d;
 }
 
 .details p {
     padding: 0.2rem;
+}
+
+/* class styles */
+.class {
+    width: 1000px;
+    margin: 0 auto;
+    margin-top: 5rem;
+    flex-direction: column;
+}
+
+.class h2 {
+    margin-bottom: 2rem;
+}
+
+.class h3 {
+    margin-top: 2rem;
+}
+
+.class-card {
+    flex-direction: column;
+    gap: 2rem;
+    border: 2px solid black;
+    padding: 0.6rem;
+    border-radius: 0.4rem;
+}
+
+.class-card label {
+    font-weight: bold;
+}
+
+.class-card p {
+    margin-left: 1rem;
+}
+
+.class-card li {
+    border-radius: 0.4rem;
+    padding: 0.6rem;
+    margin-top: 0.4rem;
+    margin-right: 1rem;
+}
+
+.class-sub-list li {
+    background-color: #d98965;
+}
+
+.class-prof-list li {
+    background-color: #6a60bf;
+    color: white;
+}
+
+.class-se-list li {
+    background-color: #51d0b8;
+}
+
+/* features styles */
+.feature {
+    width: 1000px;
+    margin: 0 auto;
+    margin-top: 5rem;
+}
+
+/* .feature-card {
+    border-collapse: ;
+} */
+
+.feature-card th,
+.feature-card td {
+    border: 2px solid black;
+    padding: 0.4rem;
+    border-radius: 0.4rem;
+}
+
+.feature-card th {
+    width: 200px;
+}
+
+/* monster styles */
+.monster {
+    justify-content: space-evenly;
+    margin-top: 10rem;
+    gap: 2rem;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.monster-card-left {
+    gap: 2rem;
+    flex-direction: column;
+}
+
+.monster-card-left .monster-name {
+    margin-top: 1rem;
+}
+
+.monster-senses-item {
+    margin: 0.4rem 0;
+}
+
+.monster-senses-item p {
+    display: inline-block;
+    border: 2px solid black;
+    border-radius: 0.3rem;
+    padding: 0.4rem;
+    margin-right: 0.4rem;
+}
+
+.monster-card-right {
+    flex-direction: column;
+    max-width: 650px;
+}
+
+.monster-card-left,
+.monster-details,
+.monster-features {
+    padding: 1rem;
+    border-radius: 0.4rem;
+}
+
+.monster-img img {
+    border-radius: 0.4rem;
+    height: 300px;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.7);
+}
+
+.monster-details {
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.monster-stats {
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius: 0.4rem;
+    padding: 1rem 2rem;
+    gap: 1rem;
+}
+
+.monster-stats-logo {
+    height: 50px;
+}
+
+.monster-details div {
+    margin: 1rem 0;
+}
+
+.type {
+    font-weight: 900;
+    margin-bottom: 1rem;
+}
+
+.value {
+    font-size: 2rem;
+}
+
+.monster-features {
+    gap: 2rem;
+    flex-direction: column;
+}
+
+.monster-sa-list,
+.monster-actions-list,
+.monster-la-list {
+    gap: 1rem;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.monster-sa-item,
+.monster-actions-item,
+.monster-la-item {
+    padding: 1rem;
+    font-size: 18px;
+    max-width: max-content;
+    border-radius: 0.4rem;
+}
+
+.monster-sa-item {
+    background-color: #278ceb;
+}
+
+.monster-actions-item {
+    background-color: #13c684;
+}
+
+.monster-la-item {
+    background-color: #cf2525;
+    color: white;
+}
+
+/* spells styles */
+.spell {
+    width: 1000px;
+    margin: 0 auto;
+    margin-top: 5rem;
+    flex-direction: column;
+}
+
+.spell h2 {
+    margin-bottom: 2rem;
+}
+
+.spell h3 {
+    margin-top: 2rem;
+}
+
+.spell-card {
+    flex-direction: column;
+    gap: 2rem;
+    border: 2px solid black;
+    padding: 0.6rem;
+    border-radius: 0.4rem;
+}
+
+.spell-card label {
+    font-weight: bold;
+}
+
+.spell-card p {
+    margin-left: 1rem;
+}
+
+.spell-card li {
+    border-radius: 0.4rem;
+    padding: 0.6rem;
+    margin-top: 0.4rem;
+    margin-right: 1rem;
+}
+
+.spell-comp-list li {
+    background-color: #d439ff;
+}
+
+.spell-classes-list li {
+    background-color: #c6a711;
+}
+
+.spell-sub-cl-list li {
+    background-color: #b67a11;
 }
