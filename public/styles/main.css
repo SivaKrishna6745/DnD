@@ -47,8 +47,16 @@ ul {
 
 /* project css */
 .project {
-    margin: 0 3rem;
     margin-top: 3rem;
+}
+
+.project-title {
+    margin-bottom: 3rem;
+}
+
+.project-hero {
+    width: 100%;
+    height: 800px;
 }
 
 .project-title span {
@@ -62,9 +70,14 @@ ul {
 }
 
 form {
-    margin: 2rem 0;
+    margin: 2rem 3rem;
     gap: 2rem;
     margin-top: 3rem;
+}
+
+.project a {
+    text-decoration: none;
+    color: inherit;
 }
 
 .form-with-cards {
@@ -105,10 +118,35 @@ form {
     font-size: 1.5rem;
     box-shadow: none;
     transition: box-shadow 150ms;
+    position: relative;
+}
+
+.form-with-inputs .btn .btn-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -20px;
+    opacity: 0;
+    transition: all 150ms ease;
+}
+
+.form-with-inputs .btn .btn-label {
+    display: inline-block;
+    transform: translateX(0);
+    transition: transform 150ms;
 }
 
 .form-with-inputs .btn:hover {
     box-shadow: 0.1rem 0.1rem 0.5rem #3d3d3d;
+}
+
+.form-with-inputs .btn:hover .btn-label {
+    transform: translateX(-10px);
+}
+
+.form-with-inputs .btn:hover .btn-icon {
+    right: 10px;
+    opacity: 1;
 }
 
 .card-cl,
@@ -135,11 +173,22 @@ form {
     grid-template-columns: repeat(4, 1fr);
 }
 
+.details-list a:nth-child(2n) li {
+    background-color: #c1c1c1;
+    box-shadow: 6px 6px 8px #7b7b7b;
+}
+
+.details-list a:nth-child(2n + 1) li {
+    background-color: #9d9d9d;
+    box-shadow: 3px 4px 8px #5d5d5d;
+}
+
 .details {
-    margin: 0.5rem;
+    margin: 1rem;
     border-radius: 0.4rem;
     padding: 1rem 2rem;
     width: 300px;
+    height: 100px;
     scale: 1;
     transition: scale 150ms;
 }
@@ -148,28 +197,13 @@ form {
     scale: 1.05;
 }
 
-.details a {
-    text-decoration: none;
-    color: inherit;
-}
-
-.details:nth-child(2n) {
-    background-color: #c1c1c1;
-    box-shadow: 3px 4px 8px #7b7b7b;
-}
-
-.details:nth-child(2n + 1) {
-    background-color: #9d9d9d;
-    box-shadow: 3px 4px 8px #5d5d5d;
-}
-
 .details p {
     padding: 0.2rem;
 }
 
 /* class styles */
 .class {
-    width: 1000px;
+    width: 1200px;
     margin: 0 auto;
     margin-top: 5rem;
     flex-direction: column;
@@ -184,11 +218,18 @@ form {
 }
 
 .class-card {
-    flex-direction: column;
-    gap: 2rem;
-    border: 2px solid black;
     padding: 0.6rem;
     border-radius: 0.4rem;
+    box-shadow: 3px 3px 8px black;
+}
+
+.class-card-left {
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.class-card-right img {
+    height: auto;
 }
 
 .class-card label {
@@ -201,34 +242,36 @@ form {
 
 .class-card li {
     border-radius: 0.4rem;
-    padding: 0.6rem;
     margin-top: 0.4rem;
     margin-right: 1rem;
 }
 
-.class-sub-list li {
-    background-color: #d98965;
-}
-
-.class-prof-list li {
-    background-color: #6a60bf;
-    color: white;
-}
-
+.class-sub-list li,
+.class-prof-list li,
 .class-se-list li {
-    background-color: #51d0b8;
+    position: relative;
+}
+
+.class-sub-list li::after,
+.class-prof-list li::after,
+.class-se-list li::after {
+    position: absolute;
+    content: ',';
+    right: 0;
+}
+
+.class-sub-list li:last-child::after,
+.class-prof-list li:last-child::after,
+.class-se-list li:last-child::after {
+    display: none;
 }
 
 /* features styles */
 .feature {
-    width: 1000px;
+    width: 1200px;
     margin: 0 auto;
     margin-top: 5rem;
 }
-
-/* .feature-card {
-    border-collapse: ;
-} */
 
 .feature-card th,
 .feature-card td {
@@ -356,7 +399,7 @@ form {
 
 /* spells styles */
 .spell {
-    width: 1000px;
+    width: 1200px;
     margin: 0 auto;
     margin-top: 5rem;
     flex-direction: column;
@@ -371,11 +414,19 @@ form {
 }
 
 .spell-card {
-    flex-direction: column;
     gap: 2rem;
-    border: 2px solid black;
     padding: 0.6rem;
     border-radius: 0.4rem;
+    box-shadow: 3px 3px 8px black;
+}
+
+.spell-card-left-hl {
+    column-gap: 5rem;
+    margin-bottom: 1rem;
+}
+
+.spell-card-right img {
+    height: 500px;
 }
 
 .spell-card label {
@@ -393,14 +444,28 @@ form {
     margin-right: 1rem;
 }
 
-.spell-comp-list li {
-    background-color: #d439ff;
+.spell-desc-list,
+.spell-higher_level-list {
+    flex-direction: column;
+    padding-left: 40px;
 }
 
-.spell-classes-list li {
-    background-color: #c6a711;
-}
-
+.spell-comp-list li,
+.spell-classes-list li,
 .spell-sub-cl-list li {
-    background-color: #b67a11;
+    position: relative;
+}
+
+.spell-comp-list li::after,
+.spell-classes-list li::after,
+.spell-sub-cl-list li::after {
+    position: absolute;
+    content: ',';
+    right: 0;
+}
+
+.spell-comp-list li:last-child::after,
+.spell-classes-list li:last-child::after,
+.spell-sub-cl-list li:last-child::after {
+    display: none;
 }

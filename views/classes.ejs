@@ -7,7 +7,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
             rel="stylesheet"
         />
         <link rel="stylesheet" href="/styles/main.css" />
@@ -16,40 +16,51 @@
         <div class="class flex">
             <h2>Below are some of the details about this class:</h2>
             <div class="class-card flex">
-                <div class="class-name flex">
-                    <label>Class Name: </label>
-                    <p><%= classesData.name %></p>
+                <div class="class-card-left flex">
+                    <% if (classesData.name) { %>
+                    <div class="class-name flex">
+                        <label>Class Name: </label>
+                        <p><%= classesData.name %></p>
+                    </div>
+                    <% } %> <% if (classesData.hit_die) { %>
+                    <div class="class-hd flex">
+                        <label>Hit Die: </label>
+                        <p><%= classesData.hit_die %></p>
+                    </div>
+                    <% } %> <% if (classesData.subclasses) { %>
+                    <div class="class-sub">
+                        <label>Sub Classes: </label>
+                        <ul class="class-sub-list flex fl-wrap">
+                            <% for(let i = 0; i < classesData.subclasses.length; i++) { %>
+                            <li><%= classesData.subclasses[i].name %></li>
+                            <% } %>
+                        </ul>
+                    </div>
+                    <% } %> <% if (classesData.proficiencies) { %>
+                    <div class="class-prof">
+                        <label>Proficiencies:</label>
+                        <ul class="class-prof-list flex fl-wrap">
+                            <% for(let i = 0; i < classesData.proficiencies.length; i++) { %>
+                            <li><%= classesData.proficiencies[i].name %></li>
+                            <% } %>
+                        </ul>
+                    </div>
+                    <% } %> <% if (classesData.starting_equipment) { %>
+                    <div class="class-se">
+                        <label>Starting Equipment:</label>
+                        <ul class="class-se-list flex fl-wrap">
+                            <% for(let i = 0; i< classesData.starting_equipment.length; i++) { %>
+                            <li>
+                                <span><%= classesData.starting_equipment[i].equipment.name %></span> -
+                                <span><%= classesData.starting_equipment[i].quantity %></span>
+                            </li>
+                            <% } %>
+                        </ul>
+                    </div>
+                    <% } %>
                 </div>
-                <div class="class-hd flex">
-                    <label>Hit Die: </label>
-                    <p><%= classesData.hit_die %></p>
-                </div>
-                <div class="class-sub">
-                    <label>Sub Class: </label>
-                    <ul class="class-sub-list flex fl-wrap">
-                        <% for(let i = 0; i < classesData.subclasses.length; i++) { %>
-                        <li><%= classesData.subclasses[i].name %></li>
-                        <% } %>
-                    </ul>
-                </div>
-                <div class="class-prof">
-                    <label>Proficiencies:</label>
-                    <ul class="class-prof-list flex fl-wrap">
-                        <% for(let i = 0; i < classesData.proficiencies.length; i++) { %>
-                        <li><%= classesData.proficiencies[i].name %></li>
-                        <% } %>
-                    </ul>
-                </div>
-                <div class="class-se">
-                    <label>Starting Equipment:</label>
-                    <ul class="class-se-list flex fl-wrap">
-                        <% for(let i = 0; i< classesData.starting_equipment.length; i++) { %>
-                        <li>
-                            <span><%= classesData.starting_equipment[i].equipment.name %></span> -
-                            <span><%= classesData.starting_equipment[i].quantity %></span>
-                        </li>
-                        <% } %>
-                    </ul>
+                <div class="class-card-right">
+                    <img src="/images/classes.png" alt="DnD classes" />
                 </div>
             </div>
             <h3>

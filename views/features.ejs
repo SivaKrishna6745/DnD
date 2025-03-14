@@ -7,7 +7,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
             rel="stylesheet"
         />
         <link rel="stylesheet" href="/styles/main.css" />
@@ -16,14 +16,17 @@
         <% if (locals.featuresData) { %>
         <div class="feature flex fl-cntr">
             <table class="feature-card flex fl-cntr">
+                <% if (featuresData.name) { %>
                 <tr class="feature-item">
                     <th>Name</th>
                     <td><%= featuresData.name %></td>
                 </tr>
+                <% } %> <% if (featuresData.level) { %>
                 <tr class="feature-item">
                     <th>Level</th>
                     <td><%= featuresData.level %></td>
                 </tr>
+                <% } %> <% if (featuresData.desc) { %>
                 <tr class="feature-item">
                     <th>Description</th>
                     <td>
@@ -32,14 +35,17 @@
                         <% } %>
                     </td>
                 </tr>
+                <% } %> <% if (featuresData.class) { %>
                 <tr class="feature-item">
                     <th>Class</th>
                     <td><%= featuresData.class.name %></td>
                 </tr>
+                <% } %> <% if (featuresData.url) { %>
                 <tr class="feature-item">
                     <th>URL</th>
                     <td>Click <a href="https://www.dnd5eapi.co<%= featuresData.url %>">here</a> to see more details</td>
                 </tr>
+                <% } %>
             </table>
         </div>
         <% } %>

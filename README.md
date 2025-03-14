@@ -34,4 +34,6 @@ Step 3: run "node index.js" or "nodemon index.js"
 
 ---
 
-![alt text](image.png)
+<!-- ![alt text](image.png) -->
+
+![alt text](home_page.jpeg)

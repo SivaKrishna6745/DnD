@@ -13,16 +13,17 @@
         <link rel="stylesheet" href="/styles/main.css" />
     </head>
     <body class="project">
-        <h1 class="project-title">Welcome to <span>Dragons & Dungeons</span></h1>
+        <h1 class="project-title" id="project-title"></h1>
+        <div id="project-hero"></div>
         <form class="flex fl-cntr" id="form-container"></form>
         <% if (locals.content) { %> <% if (locals.content.results) { %>
         <ul class="grid details-list">
             <% for (let i = 0; i < locals.content.results.length; i++) { %>
-            <li class="details">
-                <a href="<%= `${locals.endPoint}/${locals.content.results[i].index}` %>">
-                    <p>Name: <%= locals.content.results[i].name %></p>
-                </a>
-            </li>
+            <a href="<%= `${locals.endPoint}/${locals.content.results[i].index}` %>">
+                <li class="details flex fl-cntr">
+                    <p><%= locals.content.results[i].name %></p>
+                </li>
+            </a>
             <% } %>
         </ul>
         <% } else { %>
@@ -34,16 +35,20 @@
         const formContainer = document.querySelector('#form-container');
         const formWithInputs = `
             <button type="submit" class="btn btn-classes" formaction="/get-classes" />
-                Classes
+                <span class="btn-label">Classes</span>
+                <span class="btn-icon">➔</span>
             </button>
             <button type="submit" class="btn btn-features" formaction="/get-features" />
-                Features
+                <span class="btn-label">Features</span>
+                <span class="btn-icon">➔</span>
             </button>
             <button type="submit" class="btn btn-monsters" formaction="/get-monsters" />
-                Monsters
+                <span class="btn-label">Monsters</span>
+                <span class="btn-icon">➔</span>
             </button>
             <button type="submit" class="btn btn-spells" formaction="/get-spells" />
-                Spells
+                <span class="btn-label">Spells</span>
+                <span class="btn-icon">➔</span>
             </button>
         `;
         const formWithCards = `
@@ -100,12 +105,24 @@
                 </a>
             </div>
         `;
+        const projectHero = document.querySelector('#project-hero');
+        const projectTitle = document.querySelector('#project-title');
         if (currentPath === '/') {
             formContainer.innerHTML = formWithCards;
             formContainer.classList.add('form-with-cards', 'grid');
+
+            let img = document.createElement('img');
+            img.classList.add('project-hero');
+            img.src = 'images/DnD.avif';
+            img.alt = 'DnD banner';
+            projectHero.appendChild(img);
+
+            projectTitle.innerHTML = `Welcome to <span>Dungeons & Dragons</span>`;
         } else {
             formContainer.innerHTML = formWithInputs;
             formContainer.classList.add('form-with-inputs');
+
+            projectTitle.innerHTML = `<span>Dungeons & Dragons</span>`;
         }
     </script>
 </html>
