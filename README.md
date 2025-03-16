@@ -20,15 +20,11 @@ https://www.dnd5eapi.co/api/2014
 
 Step 1: Download the code
 
-Step 2: run "npm i" or "npm install"
+Step 2: run "npm i" or "npm install" to install all dependencies
 
-Step 3: run "node index.js" or "nodemon index.js"
+Step 3: run "npm run dev" to start running the project
 
-#### P.S. [nodemon](https://www.npmjs.com/package/nodemon) is a utility tool (NPM package) to assist [Node.js](https://nodejs.org/) applications by automaticlaly restarting the application whenever there is a file change detected.
-
--   To install nodemon globally, run "npm install -g nodemon" in the terminal.
-
----
+Step 4: open a browser and hit http://localhost:3000/
 
 ### Project Home Page Screenshot:
 
