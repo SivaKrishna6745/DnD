@@ -173,32 +173,52 @@ form {
     grid-template-columns: repeat(4, 1fr);
 }
 
-.details-list a:nth-child(2n) li {
+.details-list li:nth-child(2n) a {
     background-color: #c1c1c1;
     box-shadow: 6px 6px 8px #7b7b7b;
 }
 
-.details-list a:nth-child(2n + 1) li {
+.details-list li:nth-child(2n + 1) a {
     background-color: #9d9d9d;
     box-shadow: 3px 4px 8px #5d5d5d;
 }
 
-.details {
+.details a {
+    flex-direction: column;
     margin: 1rem;
+    gap: 1rem;
     border-radius: 0.4rem;
     padding: 1rem 2rem;
     width: 300px;
-    height: 100px;
+    height: 150px;
     scale: 1;
     transition: scale 150ms;
 }
 
-.details:hover {
+.details a:hover {
     scale: 1.05;
 }
 
-.details p {
+.details a p {
+    text-align: center;
     padding: 0.2rem;
+}
+
+.pagination {
+    /* background-color: #fff; */
+}
+
+.pagination li {
+    padding: 1rem;
+    margin: 0.5rem;
+    cursor: pointer;
+    border-radius: 0.4rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.pagination li:hover {
+    box-shadow: 1px 1px 4px black;
 }
 
 /* class styles */

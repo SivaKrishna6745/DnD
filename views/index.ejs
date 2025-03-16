@@ -12,117 +12,33 @@
         />
         <link rel="stylesheet" href="/styles/main.css" />
     </head>
+
     <body class="project">
         <h1 class="project-title" id="project-title"></h1>
         <div id="project-hero"></div>
         <form class="flex fl-cntr" id="form-container"></form>
-        <% if (locals.content) { %> <% if (locals.content.results) { %>
+        <% if (locals.content) { %>
         <ul class="grid details-list">
-            <% for (let i = 0; i < locals.content.results.length; i++) { %>
-            <a href="<%= `${locals.endPoint}/${locals.content.results[i].index}` %>">
-                <li class="details flex fl-cntr">
-                    <p><%= locals.content.results[i].name %></p>
-                </li>
-            </a>
+            <% for (let i=0; i < locals.content.length; i++) { %>
+            <li class="details">
+                <a href="<%= `${locals.endPoint}/${locals.content[i].index}` %>" class="flex fl-cntr">
+                    <p><%= locals.content[i].name %></p>
+                    <p><%= locals.content[i].index %></p>
+                </a>
+            </li>
             <% } %>
         </ul>
         <% } else { %>
         <h2><%= content %></h2>
+        <% } %> <% if (locals.content) { %> <% if (locals.content.length > 29) { %>
+        <ul class="pagination flex fl-cntr" id="pagination"></ul>
         <% } %> <% } %>
+        <script>
+            // An error might be seen with a red squiggly line
+            // you can ignoe this as this is used for passing data to external JS file.
+            window.resultsData = <%- JSON.stringify(locals.content || {}) %>;
+            window.count = <%- JSON.stringify(locals.count) %>;
+        </script>
+        <script src="/scripts/script.js"></script>
     </body>
-    <script>
-        const currentPath = window.location.pathname;
-        const formContainer = document.querySelector('#form-container');
-        const formWithInputs = `
-            <button type="submit" class="btn btn-classes" formaction="/get-classes" />
-                <span class="btn-label">Classes</span>
-                <span class="btn-icon">➔</span>
-            </button>
-            <button type="submit" class="btn btn-features" formaction="/get-features" />
-                <span class="btn-label">Features</span>
-                <span class="btn-icon">➔</span>
-            </button>
-            <button type="submit" class="btn btn-monsters" formaction="/get-monsters" />
-                <span class="btn-label">Monsters</span>
-                <span class="btn-icon">➔</span>
-            </button>
-            <button type="submit" class="btn btn-spells" formaction="/get-spells" />
-                <span class="btn-label">Spells</span>
-                <span class="btn-icon">➔</span>
-            </button>
-        `;
-        const formWithCards = `
-            <div class="card card-cl flex fl-cntr">
-                <a href="/get-classes" class='flex'>
-                    <h2>Classes</h2>
-                    <ul>
-                        <li>
-                            Discover the wide array of DnD Classes, each revealing their unique traits and characteristics.
-                        </li>
-                        <li>
-                            Click to discover their wild characteristics!
-                        </li>
-                    </ul>
-                </a>
-            </div>
-            <div class="card card-fe flex fl-cntr">
-                <a href="/get-features" class='flex'>
-                    <h2>Features</h2>
-                    <ul>
-                        <li>
-                            Discover the variety of DnD Features, each unveiling their unique traits and characteristics.
-                        </li>
-                        <li>
-                            Click to dive into their details.
-                        </li>
-                    </ul>
-                </a>
-            </div>
-            <div class="card card-mo flex fl-cntr">
-                <a href="/get-monsters" class='flex'>
-                    <h2>Monsters</h2>
-                    <ul>
-                        <li>
-                            Embark on an adventure with the diverse DnD Monsters, each revealing their unique traits and secrets.
-                        </li>
-                        <li>
-                            Click to uncover their secrets!
-                        </li>
-                    </ul>
-                </a>
-            </div>
-            <div class="card card-sp flex fl-cntr">
-                <a href="/get-spells" class='flex'>
-                    <h2>Spells</h2>
-                    <ul>
-                        <li>
-                            Unleash the magic with DnD Spells, each one revealing its own enchanting characteristics.
-                        </li>
-                        <li>
-                            Click to discover their mystical secrets!
-                        </li>
-                    </ul>
-                </a>
-            </div>
-        `;
-        const projectHero = document.querySelector('#project-hero');
-        const projectTitle = document.querySelector('#project-title');
-        if (currentPath === '/') {
-            formContainer.innerHTML = formWithCards;
-            formContainer.classList.add('form-with-cards', 'grid');
-
-            let img = document.createElement('img');
-            img.classList.add('project-hero');
-            img.src = 'images/DnD.avif';
-            img.alt = 'DnD banner';
-            projectHero.appendChild(img);
-
-            projectTitle.innerHTML = `Welcome to <span>Dungeons & Dragons</span>`;
-        } else {
-            formContainer.innerHTML = formWithInputs;
-            formContainer.classList.add('form-with-inputs');
-
-            projectTitle.innerHTML = `<span>Dungeons & Dragons</span>`;
-        }
-    </script>
 </html>

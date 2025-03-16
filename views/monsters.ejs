@@ -20,6 +20,8 @@
                 <div class="monster-img">
                     <img src="<%= `https://www.dnd5eapi.co${monstersData.image}` %>" alt="" />
                 </div>
+                <% } else { %>
+                <img src="/images/DnD-placeholder.png" alt="DnD placeholder" />
                 <% } %> <% if (monstersData.name) { %>
                 <div class="monster-name">
                     <label class="type">Name:</label>
